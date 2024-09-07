@@ -58,7 +58,7 @@ def version_compare(v1, v2):
     return 0
 
 def update_application(progress, label_text):
-    """pzr2.py ve aynı dizindeki diğer dosyaları GitHub'dan günceller"""
+    """pzr.py ve aynı dizindeki diğer dosyaları GitHub'dan günceller"""
     label_text.set("Güncellemeler Yükleniyor...")
     progress['value'] += 10
     debug_print("Güncelleme işlemi başlıyor...")
@@ -146,19 +146,19 @@ def check_for_updates(progress, label_text):
         debug_print("Versiyon bilgileri alınamadı.")
 
 def run_pzr_py():
-    """pzr2.py dosyasını yeni bir komut penceresinde çalıştırır ve mevcut pencereleri kapatır"""
-    if os.path.exists('pzr2.py'):
-        debug_print("pzr2.py yeni bir komut penceresinde çalıştırılıyor...")
+    """pzr.py dosyasını yeni bir komut penceresinde çalıştırır ve mevcut pencereleri kapatır"""
+    if os.path.exists('pzr.py'):
+        debug_print("pzr.py yeni bir komut penceresinde çalıştırılıyor...")
         # Windows için yeni bir komut penceresinde çalıştırma
         if sys.platform == "win32":
-            subprocess.Popen(['start', 'python', 'pzr2.py'], shell=True)
+            subprocess.Popen(['start', 'python', 'pzr.py'], shell=True)
         # Unix tabanlı sistemler için (Linux, macOS)
         else:
-            subprocess.Popen(['xterm', '-e', 'python pzr2.py'])
+            subprocess.Popen(['xterm', '-e', 'python pzr.py'])
         # Mevcut script'i kapat
         sys.exit()
     else:
-        debug_print("pzr2.py bulunamadı.")
+        debug_print("pzr.py bulunamadı.")
 
 def create_gui():
     """GUI'yi oluşturur ve güncellemeleri kontrol eder"""
@@ -190,7 +190,7 @@ def create_gui():
     # İlk 1 saniyeden sonra güncelleme kontrolü başlar
     root.after(1000, lambda: check_for_updates(progress, label_text))
 
-    # Güncellemeden 5 saniye sonra pzr2.py çalıştırılır
+    # Güncellemeden 5 saniye sonra pzr.py çalıştırılır
     root.after(6000, run_pzr_py)
 
     root.mainloop()
