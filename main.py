@@ -50,7 +50,7 @@ if __name__ == "__main__":
     check_for_updates()
 
 def main_application():
-    print("Deneme 1")
+    print("Deneme 2")
 
 if __name__ == "__main__":
     check_for_updates()
